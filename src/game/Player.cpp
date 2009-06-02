@@ -1374,11 +1374,11 @@ void Player::setDeathState(DeathState s)
 
 void Player::BuildEnumData( QueryResult * result, WorldPacket * p_data )
 {
-    *p_data << GetGUID();
+	 *p_data << GetGUID();
     *p_data << m_name;
 
     *p_data << getRace();
-    uint8 pClass = getClass();
+	uint8 pClass = getClass();
     *p_data << pClass;
     *p_data << getGender();
 
@@ -1391,10 +1391,9 @@ void Player::BuildEnumData( QueryResult * result, WorldPacket * p_data )
     bytes = GetUInt32Value(PLAYER_BYTES_2);
     *p_data << uint8(bytes);
 
-    *p_data << uint8(getLevel());                           // player level
-    // do not use GetMap! it will spawn a new instance since the bound instances are not loaded
+    *p_data << uint8(getLevel());                           //1
     uint32 zoneId = MapManager::Instance().GetZoneId(GetMapId(), GetPositionX(),GetPositionY());
-    sLog.outDebug("Player::BuildEnumData: m:%u, x:%f, y:%f, z:%f zone:%u", GetMapId(), GetPositionX(), GetPositionY(), GetPositionZ(), zoneId);
+
     *p_data << zoneId;
     *p_data << GetMapId();
 
@@ -1402,27 +1401,16 @@ void Player::BuildEnumData( QueryResult * result, WorldPacket * p_data )
     *p_data << GetPositionY();
     *p_data << GetPositionZ();
 
-    *p_data << (result ? result->Fetch()[13].GetUInt32() : 0);
+    *p_data << GetUInt32Value(PLAYER_GUILDID);              //probably wrong
 
-    uint32 char_flags = 0;
-    if(HasFlag(PLAYER_FLAGS, PLAYER_FLAGS_HIDE_HELM))
-        char_flags |= CHARACTER_FLAG_HIDE_HELM;
-    if(HasFlag(PLAYER_FLAGS, PLAYER_FLAGS_HIDE_CLOAK))
-        char_flags |= CHARACTER_FLAG_HIDE_CLOAK;
-    if(HasFlag(PLAYER_FLAGS, PLAYER_FLAGS_GHOST))
-        char_flags |= CHARACTER_FLAG_GHOST;
-    if(HasAtLoginFlag(AT_LOGIN_RENAME))
-        char_flags |= CHARACTER_FLAG_RENAME;
-    // always send the flag if declined names aren't used
-    // to let the client select a default method of declining the name
-    if(!sWorld.getConfig(CONFIG_DECLINED_NAMES_USED) || (result && result->Fetch()[14].GetCppString() != ""))
-        char_flags |= CHARACTER_FLAG_DECLINED;
+    *p_data << uint8(0x0);
+    *p_data << uint8(GetUInt32Value(PLAYER_FLAGS) << 1);
+    *p_data << uint8(0x0);                                  //Bit 4 is something dono
+    *p_data << uint8(0x0);                                  //is this player_GUILDRANK?
 
-    *p_data << (uint32)char_flags;                          // character flags
+    *p_data << (uint8)0;
 
-    *p_data << (uint8)1;                                    // unknown
-
-    // Pets info
+	// Pets info
     {
         uint32 petDisplayId = 0;
         uint32 petLevel   = 0;
@@ -1448,11 +1436,11 @@ void Player::BuildEnumData( QueryResult * result, WorldPacket * p_data )
         *p_data << (uint32)petFamily;
     }
 
-    /*ItemPrototype const *items[EQUIPMENT_SLOT_END];
-    for (int i = 0; i < EQUIPMENT_SLOT_END; i++)
+    ItemPrototype const *items[20];
+    for (int i = 0; i < 20; i++)
         items[i] = NULL;
 
-    QueryResult *result = CharacterDatabase.PQuery("SELECT slot,item_template FROM character_inventory WHERE guid = '%u' AND bag = 0",GetGUIDLow());
+    result = CharacterDatabase.PQuery("SELECT `slot`,`item_template` FROM `character_inventory` WHERE `guid` = '%u' AND `bag` = '%u'",GetGUIDLow(),INVENTORY_SLOT_BAG_0);
     if (result)
     {
         do
@@ -1460,7 +1448,7 @@ void Player::BuildEnumData( QueryResult * result, WorldPacket * p_data )
             Field *fields  = result->Fetch();
             uint8  slot    = fields[0].GetUInt8() & 255;
             uint32 item_id = fields[1].GetUInt32();
-            if( slot >= EQUIPMENT_SLOT_END )
+            if(!( slot < EQUIPMENT_SLOT_END ))
                 continue;
 
             items[slot] = objmgr.GetItemPrototype(item_id);
@@ -1471,38 +1459,21 @@ void Player::BuildEnumData( QueryResult * result, WorldPacket * p_data )
             }
         } while (result->NextRow());
         delete result;
-    }*/
+    }
 
-    for (uint8 slot = 0; slot < EQUIPMENT_SLOT_END; slot++)
+    for (int i = 0; i < 20; i++)
     {
-        uint32 visualbase = PLAYER_VISIBLE_ITEM_1_0 + (slot * MAX_VISIBLE_ITEM_OFFSET);
-        uint32 item_id = GetUInt32Value(visualbase);
-        const ItemPrototype * proto = objmgr.GetItemPrototype(item_id);
-        SpellItemEnchantmentEntry const *enchant = NULL;
-
-        for(uint8 enchantSlot = PERM_ENCHANTMENT_SLOT; enchantSlot<=TEMP_ENCHANTMENT_SLOT; enchantSlot++)
+        if (items[i] != NULL)
         {
-            uint32 enchantId = GetUInt32Value(visualbase+1+enchantSlot);
-            if(enchant = sSpellItemEnchantmentStore.LookupEntry(enchantId))
-                break;
-        }
-
-        if (proto != NULL)
-        {
-            *p_data << (uint32)proto->DisplayInfoID;
-            *p_data << (uint8)proto->InventoryType;
-            *p_data << (uint32)(enchant?enchant->aura_id:0);
+            *p_data << (uint32)items[i]->DisplayInfoID;
+            *p_data << (uint8)items[i]->InventoryType;
         }
         else
         {
             *p_data << (uint32)0;
             *p_data << (uint8)0;
-            *p_data << (uint32)0;                           // enchant?
         }
     }
-    *p_data << (uint32)0;                                   // first bag display id
-    *p_data << (uint8)0;                                    // first bag inventory type
-    *p_data << (uint32)0;                                   // enchant?
 }
 
 bool Player::ToggleAFK()

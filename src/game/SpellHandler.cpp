@@ -38,15 +38,14 @@
 void WorldSession::HandleUseItemOpcode(WorldPacket& recvPacket)
 {
     // TODO: add targets.read() check
-    CHECK_PACKET_SIZE(recvPacket,1+1+1+1+8);
+    CHECK_PACKET_SIZE(recvPacket,1+1+1);
 
     Player* pUser = _player;
-    uint8 bagIndex, slot;
-    uint8 spell_count;                                      // number of spells at item, not used
-    uint8 cast_count;                                       // next cast if exists (single or not)
-    uint64 item_guid;
+    uint8 bagIndex, slot, item_guid;
+    //[TZERO]uint8 spell_count;                                      // number of spells at item, not used
+    //[TZERO]uint8 cast_count;                                       // next cast if exists (single or not)
 
-    recvPacket >> bagIndex >> slot >> spell_count >> cast_count >> item_guid;
+    recvPacket >> bagIndex >> slot >>/* spell_count >> cast_count >>*/ item_guid;
 
     Item *pItem = pUser->GetItemByPos(bagIndex, slot);
     if(!pItem)
@@ -55,13 +54,13 @@ void WorldSession::HandleUseItemOpcode(WorldPacket& recvPacket)
         return;
     }
 
-    if(pItem->GetGUID() != item_guid)
+   /* if(pItem->GetGUID() != item_guid)
     {
         pUser->SendEquipError(EQUIP_ERR_ITEM_NOT_FOUND, NULL, NULL );
         return;
-    }
+    }*/
 
-    sLog.outDetail("WORLD: CMSG_USE_ITEM packet, bagIndex: %u, slot: %u, spell_count: %u , cast_count: %u, Item: %u, data length = %i", bagIndex, slot, spell_count, cast_count, pItem->GetEntry(), recvPacket.size());
+    sLog.outDetail("WORLD: CMSG_USE_ITEM packet, bagIndex: %u, slot: %u, Item: %u, data length = %i", bagIndex, slot, pItem->GetEntry(), recvPacket.size());
 
     ItemPrototype const *proto = pItem->GetProto();
     if(!proto)
@@ -133,7 +132,7 @@ void WorldSession::HandleUseItemOpcode(WorldPacket& recvPacket)
 
             Spell *spell = new Spell(pUser, spellInfo, false);
             spell->m_CastItem = pItem;
-            spell->m_cast_count = cast_count;               //set count of casts
+            //[TZERO]spell->m_cast_count = cast_count;               //set count of casts
             spell->m_currentBasePoints[0] = learning_spell_id;
             spell->prepare(&targets);
             return;
@@ -163,7 +162,7 @@ void WorldSession::HandleUseItemOpcode(WorldPacket& recvPacket)
 
             Spell *spell = new Spell(pUser, spellInfo, (count > 0));
             spell->m_CastItem = pItem;
-            spell->m_cast_count = cast_count;               //set count of casts
+            //[TZERO]spell->m_cast_count = cast_count;               //set count of casts
             spell->prepare(&targets);
 
             ++count;

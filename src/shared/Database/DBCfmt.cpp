@@ -37,6 +37,7 @@ const char EmoteEntryfmt[]="nxixxxxxxxxxxxxxxxx";
 const char FactionEntryfmt[]="niiiiiiiiiiiiiiiiiissssssssxxxxxxxxxx";
 const char FactionTemplateEntryfmt[]="niiiiiiiiiiiii";
 const char ItemDisplayTemplateEntryfmt[]="ixxxxxxxxxxixxxxxxxxxxx";
+const char ItemRandomPropertiesfmt[]="nxiiixxxxxxxxxxx";
 const char ItemSetEntryfmt[]="dssssssssxxxxxxxxxxxxxxxxxxiiiiiiiiiiiiiiiiii";
 const char LockEntryfmt[]="niiiiixxxiiiiixxxiixxxxxxxxxxxxxx";
 const char MailTemplateEntryfmt[]="nxxxxxxxxx";                                      // new
@@ -47,7 +48,7 @@ const char SkillLineAbilityfmt[]="niiiixxiiiiixxi";
 const char SoundEntriesfmt[]="nxxxxxxxxxxxxxxxxxxxxxxxxxxxx";	
 const char SpellCastTimefmt[]="nixx";
 const char SpellDurationfmt[]="niii";
-const char SpellEntryfmt[]="niixiiiiixiixiiixiiiiiiiiiiiiiiiiiiiifiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiffffffiiixxxiiiiiiiiiiiiiiifffiiiiiiiiiiiifffixiiissssssssissssssssixxxxxxxxxxxxxxxxxxiiiiiixiixxfffxxx";
+const char SpellEntryfmt[]="niixiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiifiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiffffffiiiiiiiiiiiiiiiiiiiiifffiiiiiiiiiiiifffixiixssssssssxssssssssxxxxxxxxxxxxxxxxxxxiiiiiiiiiixfffxxx";
 const char SpellFocusObjectfmt[]="nxxxxxxxxx";
 const char SpellItemEnchantmentfmt[]="niiiiiixxxiiissssssssxii";
 const char SpellRadiusfmt[]="nfxf";
@@ -63,10 +64,7 @@ const char WorldMapAreaEntryfmt[]="xinxffff";
 const char WorldSafeLocsEntryfmt[]="nifffxxxxxxxxx";
 // endof correct for 1.12
 
-
-
 // [TZERO] these must be replaced with sql tables
-const char ItemRandomPropertiesfmt[]="nxiiixxxxxxxxxxx";
 const char ItemRandomSuffixfmt[]="nxxxxxxxxxxxxxxxxxxiiiiii";
 const char RandomPropertiesPointsfmt[]="niiiiiiiiiiiiiii";
 

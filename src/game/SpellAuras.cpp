@@ -3230,8 +3230,7 @@ void Aura::HandleAuraModSilence(bool apply, bool Real)
     if(apply)
     {
         m_target->SetFlag(UNIT_FIELD_FLAGS, UNIT_FLAG_SILENCED);
-/* [TZERO] not used in 1.12  [?] 
-		// Stop cast only spells vs PreventionType == SPELL_PREVENTION_TYPE_SILENCE
+        // Stop cast only spells vs PreventionType == SPELL_PREVENTION_TYPE_SILENCE
         for (uint32 i = CURRENT_MELEE_SPELL; i < CURRENT_MAX_SPELL;i++)
         {
             Spell* currentSpell = m_target->m_currentSpells[i];
@@ -3245,7 +3244,7 @@ void Aura::HandleAuraModSilence(bool apply, bool Real)
                 }
             }
         }
-*/
+
         switch (GetId())
         {
             // Arcane Torrent (Energy)

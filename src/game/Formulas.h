@@ -232,12 +232,12 @@ namespace Trinity
             // The XP to Level is always rounded to the nearest 100 points (50 rounded to high).
             xp = ((xp + 50) / 100) * 100;                   // use additional () for prevent free association operations in C++
 
-            if ((lvl > 10) && (lvl < 60))                   // compute discount added in 2.3.x
+            /*[TZERO]if ((lvl > 10) && (lvl < 60))                   // compute discount added in 2.3.x
             {
                 uint32 discount = (lvl < 28) ? (lvl - 10) : 18;
                 xp = (xp * (100 - discount)) / 100;         // apply discount
                 xp = (xp / 100) * 100;                      // floor to hundreds
-            }
+            }*/
 
             return xp;
         }

@@ -249,6 +249,10 @@ void WorldSession::HandleGameObjectQueryOpcode( WorldPacket & recv_data )
         data << (uint32)info->displayId;
         data << info->name;
         data << uint16(0) << uint8(0) << uint8(0);           // name2, name3, name4
+
+            for (uint16 d=0;d<10;d++)
+		    data << info->raw.data[d];
+
         data << uint64(0);
         data << uint64(0);
         data << uint64(0);
@@ -263,8 +267,7 @@ void WorldSession::HandleGameObjectQueryOpcode( WorldPacket & recv_data )
         // data << uint8(0);                                   // 2.0.3, probably string
         // data.append(info->raw.data,24);
 
-		for (uint16 d=0;d<24;d++)
-		  data << info->raw.data[d];
+
 
         SendPacket( &data );
         sLog.outDebug(  "WORLD: Sent CMSG_GAMEOBJECT_QUERY " );

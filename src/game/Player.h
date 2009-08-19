@@ -137,7 +137,7 @@ enum ActionButtonType
     ACTION_BUTTON_ITEM  = 128
 };
 
-#define  MAX_ACTION_BUTTONS 120		// 132 in tbc  //checked in 2.3.0
+#define  MAX_ACTION_BUTTONS 120        // 132 in tbc  //checked in 2.3.0
 
 typedef std::map<uint8,ActionButton> ActionButtonList;
 
@@ -385,7 +385,7 @@ enum TYPE_OF_KILL
 
 enum PlayerFlags
 {
-	PLAYER_FLAGS_GROUP_LEADER   = 0x00000001,
+    PLAYER_FLAGS_GROUP_LEADER   = 0x00000001,
     PLAYER_FLAGS_AFK            = 0x00000002,
     PLAYER_FLAGS_DND            = 0x00000004,
     PLAYER_FLAGS_GM             = 0x00000008,
@@ -397,7 +397,7 @@ enum PlayerFlags
     PLAYER_FLAGS_UNK            = 0x00001000,               //played long time
     PLAYER_FLAGS_UNK2           = 0x00002000,               //played too long time
 
-	//[TZERO] Tbc enumeration [?]
+    //[TZERO] Tbc enumeration [?]
     PLAYER_FLAGS_FFA_PVP        = 0x00000080,
     PLAYER_FLAGS_CONTESTED_PVP  = 0x00000100,               // Player has been involved in a PvP combat and will be attacked by contested guards
     PLAYER_FLAGS_SANCTUARY      = 0x00010000,               // player entered sanctuary
@@ -487,7 +487,6 @@ enum LootType
     LOOT_FISHING                = 3,
     LOOT_PICKPOCKETING          = 4,                        // unsupported by client, sending LOOT_SKINNING instead
     LOOT_DISENCHANTING          = 5,                        // unsupported by client, sending LOOT_SKINNING instead
-    LOOT_PROSPECTING            = 6,                        // unsupported by client, sending LOOT_SKINNING instead
     LOOT_INSIGNIA               = 7,                        // unsupported by client, sending LOOT_SKINNING instead
     LOOT_FISHINGHOLE            = 8                         // unsupported by client, sending LOOT_FISHING instead
 };
@@ -1714,10 +1713,10 @@ class TRINITY_DLL_SPEC Player : public Unit
         void UpdateSkillsToMaxSkillsForLevel();             // for .levelup
         void ModifySkillBonus(uint32 skillid,int32 val, bool talent);
 
-	    /*********************************************************/
+        /*********************************************************/
         /***                  HONOR SYSTEM                     ***/
         /*********************************************************/
-		void UpdateHonor();
+        void UpdateHonor();
         void CalculateHonor(Unit *pVictim);
         uint32 CalculateHonorRank(float honor) const;
         uint32 GetHonorRank() const;
@@ -1735,7 +1734,7 @@ class TRINITY_DLL_SPEC Player : public Unit
         int32 GetHonorLastWeekStanding() const { return m_standing; }
         void SetHonorLastWeekStanding(int32 standing){ m_standing = standing; }
 
-		float m_total_honor_points;
+        float m_total_honor_points;
         float m_rating;
         uint32 m_highest_rank;
         int32 m_standing;
@@ -1944,7 +1943,7 @@ class TRINITY_DLL_SPEC Player : public Unit
         /*********************************************************/
         /***                 VARIOUS SYSTEMS                   ***/
         /*********************************************************/
-		float m_modManaRegen[2];  // 0: mana regen 1: mana regen interrupt
+        float m_modManaRegen[2];  // 0: mana regen 1: mana regen interrupt
         MovementInfo m_movementInfo;
         uint32 m_lastFallTime;
         float  m_lastFallZ;

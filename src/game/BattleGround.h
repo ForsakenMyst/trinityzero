@@ -390,7 +390,7 @@ class BattleGround
         virtual void HandleKillPlayer(Player *player, Player *killer);
         virtual void HandleKillUnit(Creature* /*unit*/, Player* /*killer*/);
 
-		// must be implemented in BG subclass
+        // must be implemented in BG subclass
         virtual void HandleAreaTrigger(Player* /*Source*/, uint32 /*Trigger*/) {}
         /* Battleground events */
         /* these functions will return true event is possible, but false if player is bugger */

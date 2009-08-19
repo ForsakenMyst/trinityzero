@@ -31,7 +31,7 @@ void WorldSession::HandleChannelJoin(WorldPacket& recvPacket)
     recvPacket.hexlike();
     CHECK_PACKET_SIZE(recvPacket,4+1);
 
-	uint32 channel_id=0;
+    uint32 channel_id=0;
     std::string channelname, pass;
 
     recvPacket >> channelname;

@@ -271,7 +271,6 @@ ChatCommand * ChatHandler::getCommandTable()
         { "npc_vendor",                  SEC_ADMINISTRATOR, true,  &ChatHandler::HandleReloadNpcVendorCommand,               "", NULL },
         { "page_text",                   SEC_ADMINISTRATOR, true,  &ChatHandler::HandleReloadPageTextsCommand,               "", NULL },
         { "pickpocketing_loot_template", SEC_ADMINISTRATOR, true,  &ChatHandler::HandleReloadLootTemplatesPickpocketingCommand,"",NULL},
-        { "prospecting_loot_template",   SEC_ADMINISTRATOR, true,  &ChatHandler::HandleReloadLootTemplatesProspectingCommand,"", NULL },
         { "quest_mail_loot_template",    SEC_ADMINISTRATOR, true,  &ChatHandler::HandleReloadLootTemplatesQuestMailCommand,  "", NULL },
         { "quest_end_scripts",           SEC_ADMINISTRATOR, true,  &ChatHandler::HandleReloadQuestEndScriptsCommand,         "", NULL },
         { "quest_start_scripts",         SEC_ADMINISTRATOR, true,  &ChatHandler::HandleReloadQuestStartScriptsCommand,       "", NULL },
@@ -1003,7 +1002,7 @@ void ChatHandler::FillMessageData( WorldPacket *data, WorldSession* session, uin
     else
         *data << uint32(LANG_UNIVERSAL);
 
-	if (type == CHAT_MSG_CHANNEL)
+    if (type == CHAT_MSG_CHANNEL)
     {
         ASSERT(channelName);
         *data << channelName;
@@ -1059,9 +1058,9 @@ void ChatHandler::FillMessageData( WorldPacket *data, WorldSession* session, uin
 
     *data << uint64(target_guid);                           // there 0 for BG messages
 
-	//[TZERO] must be checked  *data << uint32(0);     // can be chat msg group or something 
+    //[TZERO] must be checked  *data << uint32(0);     // can be chat msg group or something 
 
-	if (type == CHAT_MSG_SAY || type == CHAT_MSG_YELL || type == CHAT_MSG_PARTY)
+    if (type == CHAT_MSG_SAY || type == CHAT_MSG_YELL || type == CHAT_MSG_PARTY)
      *data << uint64(target_guid);
 
     *data << uint32(messageLength);

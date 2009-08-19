@@ -936,7 +936,7 @@ void BattleGround::UpdatePlayerScore(Player *Source, uint32 type, uint32 value)
             break;
         case SCORE_BONUS_HONOR:                             // Honor bonus
                /* [TZERO] to replace?
-			   // reward honor instantly
+               // reward honor instantly
                 if(Source->RewardHonor(NULL, 1, value))
                     itr->second->BonusHonor += value; */
             break;

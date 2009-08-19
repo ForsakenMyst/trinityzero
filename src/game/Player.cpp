@@ -7040,17 +7040,6 @@ void Player::SendLoot(uint64 guid, LootType loot_type)
                 loot->FillLoot(item->GetProto()->DisenchantID, LootTemplates_Disenchant, this);
             }
         }
-        else if(loot_type == LOOT_PROSPECTING)
-        {
-            loot = &item->loot;
-
-            if(!item->m_lootGenerated)
-            {
-                item->m_lootGenerated = true;
-                loot->clear();
-                loot->FillLoot(item->GetEntry(), LootTemplates_Prospecting, this);
-            }
-        }
         else
         {
             loot = &item->loot;
@@ -7247,7 +7236,7 @@ void Player::SendLoot(uint64 guid, LootType loot_type)
     }
 
     // LOOT_PICKPOCKETING, LOOT_PROSPECTING, LOOT_DISENCHANTING and LOOT_INSIGNIA unsupported by client, sending LOOT_SKINNING instead
-    if(loot_type == LOOT_PICKPOCKETING || loot_type == LOOT_DISENCHANTING || loot_type == LOOT_PROSPECTING || loot_type == LOOT_INSIGNIA)
+    if(loot_type == LOOT_PICKPOCKETING || loot_type == LOOT_DISENCHANTING || loot_type == LOOT_INSIGNIA)
         loot_type = LOOT_SKINNING;
 
     if(loot_type == LOOT_FISHINGHOLE)

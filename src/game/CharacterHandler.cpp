@@ -382,7 +382,7 @@ void WorldSession::HandleCharCreateOpcode( WorldPacket & recv_data )
     LoginDatabase.PExecute("DELETE FROM realmcharacters WHERE acctid= '%d' AND realmid = '%d'", GetAccountId(), realmID);
     LoginDatabase.PExecute("INSERT INTO realmcharacters (numchars, acctid, realmid) VALUES (%u, %u, %u)",  charcount, GetAccountId(), realmID);
 
-	delete pNewChar;                                        // created only to call SaveToDB()
+    delete pNewChar;                                        // created only to call SaveToDB()
 
     data << (uint8)CHAR_CREATE_SUCCESS;
     SendPacket( &data );
@@ -494,11 +494,11 @@ void WorldSession::HandlePlayerLogin(LoginQueryHolder * holder)
 
     SetPlayer(pCurrChar);
 
-	 WorldPacket data;
+     WorldPacket data;
 
    // pCurrChar->SendDungeonDifficulty(false);
 
-	data.Initialize( SMSG_LOGIN_VERIFY_WORLD, 20 );
+    data.Initialize( SMSG_LOGIN_VERIFY_WORLD, 20 );
     data << pCurrChar->GetMapId();
     data << pCurrChar->GetPositionX();
     data << pCurrChar->GetPositionY();
@@ -511,7 +511,7 @@ void WorldSession::HandlePlayerLogin(LoginQueryHolder * holder)
         data << uint8(0);
     SendPacket(&data);
 
-	pCurrChar->GetSocial()->SendSocialList();
+    pCurrChar->GetSocial()->SendSocialList();
 
      //Send MOTD
     {
@@ -519,7 +519,7 @@ void WorldSession::HandlePlayerLogin(LoginQueryHolder * holder)
         uint32 linecount=0;
         std::string str_motd = sWorld.GetMotd();
         std::string::size_type pos, nextpos;
-		std::string motd;
+        std::string motd;
 
         pos = 0;
         while ( (nextpos= str_motd.find('@',pos)) != std::string::npos )
@@ -597,7 +597,7 @@ void WorldSession::HandlePlayerLogin(LoginQueryHolder * holder)
     if(!pCurrChar->isAlive())
         pCurrChar->SendCorpseReclaimDelay(true);
 
-	pCurrChar->SendInitialPacketsBeforeAddToMap();
+    pCurrChar->SendInitialPacketsBeforeAddToMap();
 
     //Show cinematic at the first time that player login
     if( !pCurrChar->getCinematic() )

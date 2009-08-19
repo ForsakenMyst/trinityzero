@@ -2033,7 +2033,7 @@ bool ChatHandler::HandleModifyHonorCommand (const char* args)
     PSendSysMessage(LANG_COMMAND_MODIFY_HONOR, target->GetName(), target->GetHonorPoints());
 
     return true; */
-	return false;
+    return false;
 }
 
 bool ChatHandler::HandleTeleCommand(const char * args)

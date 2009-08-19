@@ -341,7 +341,7 @@ void WorldSession::HandlePetitionRenameOpcode(WorldPacket & recv_data)
             SendGuildCommandResult(GUILD_CREATE_S, newname, GUILD_NAME_INVALID);
             return;
         }
-	}
+    }
 
     std::string db_newname = newname;
     CharacterDatabase.escape_string(db_newname);
@@ -398,8 +398,8 @@ void WorldSession::HandlePetitionSignOpcode(WorldPacket & recv_data)
         return;
     }
 
-	if(type != 9)
-	{
+    if(type != 9)
+    {
         if(_player->GetGuildId())
         {
             SendGuildCommandResult(GUILD_INVITE_S, _player->GetName(), ALREADY_IN_GUILD);
@@ -518,7 +518,7 @@ void WorldSession::HandleOfferPetitionOpcode(WorldPacket & recv_data)
 
     if (!sWorld.getConfig(CONFIG_ALLOW_TWO_SIDE_INTERACTION_GUILD) && GetPlayer()->GetTeam() != player->GetTeam() )
     {
-	  if(type == 9)
+      if(type == 9)
             SendGuildCommandResult(GUILD_CREATE_S, "", GUILD_NOT_ALLIED);
         return;
     }

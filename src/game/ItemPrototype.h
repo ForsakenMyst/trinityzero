@@ -32,8 +32,8 @@ enum ItemModType
     ITEM_MOD_INTELLECT                = 5,
     ITEM_MOD_SPIRIT                   = 6,
     ITEM_MOD_STAMINA                  = 7,
-	// [TZERO] tbc enumerations [?]
-	ITEM_MOD_DEFENSE_SKILL_RATING     = 12,
+    // [TZERO] tbc enumerations [?]
+    ITEM_MOD_DEFENSE_SKILL_RATING     = 12,
     ITEM_MOD_DODGE_RATING             = 13,
     ITEM_MOD_PARRY_RATING             = 14,
     ITEM_MOD_BLOCK_RATING             = 15,
@@ -69,7 +69,7 @@ enum ItemSpelltriggerType
     ITEM_SPELLTRIGGER_ON_EQUIP        = 1,
     ITEM_SPELLTRIGGER_CHANCE_ON_HIT   = 2,
     ITEM_SPELLTRIGGER_SOULSTONE       = 4,
-	// [TZERO] tbc enumerations [?]
+    // [TZERO] tbc enumerations [?]
     ITEM_SPELLTRIGGER_ON_NO_DELAY_USE = 5,                  // no equip cooldown
     ITEM_SPELLTRIGGER_LEARN_SPELL_ID  = 6                   // used in item_template.spell_2 with spell_id with SPELL_GENERIC_LEARN in spell_1
 };
@@ -107,7 +107,7 @@ enum ITEM_FLAGS
 enum BAG_FAMILY_MASK
 {
 
-	BAG_FAMILY_NONE                             = 0,
+    BAG_FAMILY_NONE                             = 0,
     BAG_FAMILY_MASK_ARROWS                           = 1,
     BAG_FAMILY_MASK_BULLETS                          = 2,
     BAG_FAMILY_MASK_SOUL_SHARDS                      = 3,
@@ -121,7 +121,7 @@ enum BAG_FAMILY_MASK
     //BAG_FAMILY_UNK3                           = 11,
     BAG_FAMILY_MASK_MINING_SUPP                      = 12,
 
-	// [TZERO] tbc enumerations [?]
+    // [TZERO] tbc enumerations [?]
     BAG_FAMILY_MASK_SOULBOUND_EQUIPMENT       = 0x00000800,
     BAG_FAMILY_MASK_VANITY_PETS               = 0x00001000,
     BAG_FAMILY_MASK_CURRENCY_TOKENS           = 0x00002000,
@@ -189,7 +189,7 @@ enum ItemClass
 enum ItemSubclassConsumable
 {
 
-	ITEM_SUBCLASS_FOOD                    = 1,
+    ITEM_SUBCLASS_FOOD                    = 1,
     ITEM_SUBCLASS_LIQUID                  = 2,
     ITEM_SUBCLASS_POTION                  = 3,
     ITEM_SUBCLASS_SCROLL                  = 4,
@@ -208,7 +208,7 @@ enum ItemSubclassContainer
     ITEM_SUBCLASS_HERB_CONTAINER                = 2,
     ITEM_SUBCLASS_ENCHANTING_CONTAINER          = 3,
     ITEM_SUBCLASS_ENGINEERING_CONTAINER         = 4,
-	
+    
     ITEM_SUBCLASS_GEM_CONTAINER                 = 5,
     ITEM_SUBCLASS_MINING_CONTAINER              = 6,
     ITEM_SUBCLASS_LEATHERWORKING_CONTAINER      = 7
@@ -252,7 +252,7 @@ enum ItemSubclassArmor
     ITEM_SUBCLASS_ARMOR_PLATE                   = 4,
     ITEM_SUBCLASS_ARMOR_BUCKLER                 = 5,
     ITEM_SUBCLASS_ARMOR_SHIELD                  = 6,
-	// [TZERO] tbc enumerations [?]
+    // [TZERO] tbc enumerations [?]
     ITEM_SUBCLASS_ARMOR_LIBRAM                  = 7,
     ITEM_SUBCLASS_ARMOR_IDOL                    = 8,
     ITEM_SUBCLASS_ARMOR_TOTEM                   = 9
@@ -497,11 +497,11 @@ struct ItemPrototype
     uint32 Map;                                             // id from Map.dbc
     uint32 BagFamily;                                       // id from ItemBagFamily.dbc
 
-	// useless in 1.12 but we have to keep it for SqlStorage ( to delete as soon as possible) 
-	uint32 TotemCategory;                                   // id from TotemCategory.dbc
+    // useless in 1.12 but we have to keep it for SqlStorage ( to delete as soon as possible) 
+    uint32 TotemCategory;                                   // id from TotemCategory.dbc
     _Socket Socket[3];
     uint32 socketBonus;                                     // id from SpellItemEnchantment.dbc
-	uint32 GemProperties; 
+    uint32 GemProperties; 
 
     uint32 RequiredDisenchantSkill;
     float  ArmorDamageModifier;

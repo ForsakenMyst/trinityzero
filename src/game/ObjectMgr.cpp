@@ -1935,7 +1935,7 @@ void ObjectMgr::LoadPlayerInfo()
 
             // skip expansion races if not playing with expansion
            /*[TZERO]
-		      if (sWorld.getConfig(CONFIG_EXPANSION) < 1 && (race == RACE_BLOODELF || race == RACE_DRAENEI))
+              if (sWorld.getConfig(CONFIG_EXPANSION) < 1 && (race == RACE_BLOODELF || race == RACE_DRAENEI))
                 continue; */
 
             // skip expansion classes if not playing with expansion
@@ -2358,7 +2358,7 @@ void ObjectMgr::LoadQuests()
         }
 
         // client quest log visual (area case)
-		/* [TZERO] "not error in 1.12"
+        /* [TZERO] "not error in 1.12"
         if( qinfo->ZoneOrSort > 0 )
         {
             if(!GetAreaEntryByAreaID(qinfo->ZoneOrSort))
@@ -3636,8 +3636,8 @@ void ObjectMgr::LoadInstanceTemplate()
         {
             // use defaults from the DBC
             /*
-			TEMPORARY
-			if(entry->SupportsHeroicMode())
+            TEMPORARY
+            if(entry->SupportsHeroicMode())
             {
                 temp->reset_delay = entry->resetTimeHeroic / DAY;
             }
@@ -3645,7 +3645,7 @@ void ObjectMgr::LoadInstanceTemplate()
             {
                 temp->reset_delay = entry->resetTimeRaid / DAY;
             }
-			*/
+            */
         }
 
         // the reset_delay must be at least one day
@@ -4632,7 +4632,7 @@ void ObjectMgr::LoadAccessRequirements()
 AreaTrigger const* ObjectMgr::GetGoBackTrigger(uint32 Map) const
 {
     /* TEMPORARY
-	const MapEntry *mapEntry = sMapStore.LookupEntry(Map);
+    const MapEntry *mapEntry = sMapStore.LookupEntry(Map);
     if(!mapEntry) return NULL;
     for (AreaTriggerMap::const_iterator itr = mAreaTriggers.begin(); itr != mAreaTriggers.end(); ++itr)
     {

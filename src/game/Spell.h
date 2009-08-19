@@ -78,10 +78,10 @@ enum SpellRangeFlag
 enum SpellNotifyPushType
 {
     PUSH_NONE           = 0,
-	PUSH_SRC_CENTER,
+    PUSH_SRC_CENTER,
     PUSH_DST_CENTER,
 
-	//[TZERO] Tbc enumerations [?]
+    //[TZERO] Tbc enumerations [?]
     PUSH_IN_FRONT,
     PUSH_IN_BACK,
     PUSH_IN_LINE,
@@ -306,7 +306,6 @@ class Spell
         void EffectSelfResurrect(uint32 i);
         void EffectSkinning(uint32 i);
         void EffectCharge(uint32 i);
-        void EffectProspecting(uint32 i);
         void EffectSendTaxi(uint32 i);
         void EffectSummonCritter(uint32 i);
         void EffectKnockBack(uint32 i);

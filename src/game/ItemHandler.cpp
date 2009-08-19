@@ -435,8 +435,8 @@ void WorldSession::HandleItemQuerySingleOpcode( WorldPacket & recv_data )
         sLog.outDebug(  "WORLD: CMSG_ITEM_QUERY_SINGLE - NO item INFO! (ENTRY: %u)", item );
         WorldPacket data( SMSG_ITEM_QUERY_SINGLE_RESPONSE, 600);
         data << uint32(item | 0x80000000);
-		/*data << item;
-		for(int a = 0; a < 11; a++)
+        /*data << item;
+        for(int a = 0; a < 11; a++)
            data << uint64(0);
         data << uint32(0);     */                             // Added in 1.12.x client branch
         SendPacket( &data );

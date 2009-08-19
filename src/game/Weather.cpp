@@ -204,7 +204,7 @@ bool Weather::ReGenerate()
 
 void Weather::SendWeatherUpdateToPlayer(Player *player)
 {
-	uint32 sound = GetSound(); // for 1.12
+    uint32 sound = GetSound(); // for 1.12
     WorldPacket data( SMSG_WEATHER, (4+4+4) );
 
     data << (uint32)m_type << (float)m_grade << (uint32)sound;
@@ -227,7 +227,7 @@ bool Weather::UpdateWeather()
         return false;
 
     ///- Send the weather packet to all players in this zone
-	uint32 sound = GetSound();
+    uint32 sound = GetSound();
 
     if (m_grade >= 1)
         m_grade = 0.9999f;
@@ -332,7 +332,7 @@ uint32 Weather::GetSound()
     return sound;
 
   /*[TZERO] tbc [?]
-	        case WEATHER_TYPE_BLACKRAIN:
+            case WEATHER_TYPE_BLACKRAIN:
             return WEATHER_STATE_BLACKRAIN;
         case WEATHER_TYPE_THUNDERS:
             return WEATHER_STATE_THUNDERS; */

@@ -190,7 +190,7 @@ pEffect SpellEffects[TOTAL_SPELL_EFFECTS]=
     &Spell::EffectPlayerPull,                               //124 SPELL_EFFECT_PLAYER_PULL              opposite of knockback effect (pulls player twoard caster)
     &Spell::EffectModifyThreatPercent,                      //125 SPELL_EFFECT_MODIFY_THREAT_PERCENT
     &Spell::EffectStealBeneficialBuff,                      //126 SPELL_EFFECT_STEAL_BENEFICIAL_BUFF    spell steal effect?
-    &Spell::EffectProspecting,                              //127 SPELL_EFFECT_PROSPECTING              Prospecting spell
+    &Spell::EffectNULL,                                     //127 SPELL_EFFECT_PROSPECTING              Prospecting spell
     &Spell::EffectApplyAreaAura,                            //128 SPELL_EFFECT_APPLY_AREA_AURA_FRIEND
     &Spell::EffectApplyAreaAura,                            //129 SPELL_EFFECT_APPLY_AREA_AURA_ENEMY
     &Spell::EffectRedirectThreat,                           //130 SPELL_EFFECT_REDIRECT_THREAT
@@ -4935,7 +4935,7 @@ void Spell::EffectAddComboPoints(uint32 /*i*/)
         return;
 
     ((Player*)m_caster)->AddComboPoints(unitTarget, damage);
-	m_caster->SetUInt64Value(PLAYER_FIELD_COMBO_TARGET,unitTarget->GetGUID());
+    m_caster->SetUInt64Value(PLAYER_FIELD_COMBO_TARGET,unitTarget->GetGUID());
 }
 
 void Spell::EffectDuel(uint32 i)
@@ -6074,28 +6074,6 @@ void Spell::EffectTransmitted(uint32 effIndex)
             return;
         }
     }
-}
-
-void Spell::EffectProspecting(uint32 /*i*/)
-{
-    if(m_caster->GetTypeId() != TYPEID_PLAYER)
-        return;
-
-    Player* p_caster = (Player*)m_caster;
-    if(!itemTarget || !(itemTarget->GetProto()->BagFamily & BAG_FAMILY_MASK_MINING_SUPP))
-        return;
-
-    if(itemTarget->GetCount() < 5)
-        return;
-
-    if( sWorld.getConfig(CONFIG_SKILL_PROSPECTING))
-    {
-        uint32 SkillValue = p_caster->GetPureSkillValue(SKILL_JEWELCRAFTING);
-        uint32 reqSkillValue = itemTarget->GetProto()->RequiredSkillRank;
-        p_caster->UpdateGatherSkill(SKILL_JEWELCRAFTING, SkillValue, reqSkillValue);
-    }
-
-    ((Player*)m_caster)->SendLoot(itemTarget->GetGUID(), LOOT_PROSPECTING);
 }
 
 void Spell::EffectSkill(uint32 /*i*/)

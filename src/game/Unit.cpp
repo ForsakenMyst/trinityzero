@@ -377,7 +377,7 @@ void Unit::SendMonsterMove(float NewPosX, float NewPosY, float NewPosZ, uint32 T
     data << getMSTime();
 
     data << uint8(0);
-	data << uint32(MOVEFLAG_WALK);
+    data << uint32(MOVEFLAG_WALK);
 
     data << Time;                                           // Time in between points
     data << uint32(1);                                      // 1 single waypoint
@@ -10397,7 +10397,7 @@ uint32 Unit::GetCreatureType() const
 {
     if(GetTypeId() == TYPEID_PLAYER)
     {
-	   // TODO: find way to return correct creature type for 1.12 for shapeshifted players
+       // TODO: find way to return correct creature type for 1.12 for shapeshifted players
        // SpellShapeshiftEntry const* ssEntry = sSpellShapeshiftStore.LookupEntry(((Player*)this)->m_form);
        // if(ssEntry && ssEntry->creatureType > 0)
        //     return ssEntry->creatureType;
@@ -10831,7 +10831,7 @@ void Unit::RemoveFromWorld()
 void Unit::CleanupsBeforeDelete()
 {
      
-	assert(m_uint32Values);
+    assert(m_uint32Values);
 
     //A unit may be in removelist and not in world, but it is still in grid
     //and may have some references during delete

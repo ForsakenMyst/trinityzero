@@ -458,7 +458,7 @@ void PlayerMenu::SendQuestGiverQuestDetails( Quest const *pQuest, uint64 npcGUID
         data << uint32(pQuest->GetRewOrReqMoney());
     }
 
-	data << pQuest->GetReqItemsCount();
+    data << pQuest->GetReqItemsCount();
     for (uint32 i=0; i <  QUEST_OBJECTIVES_COUNT; i++)
     {
         data << pQuest->ReqItemId[i];
@@ -544,9 +544,9 @@ void PlayerMenu::SendQuestQueryResponse( Quest const *pQuest )
         data << uint32(pQuest->GetRewOrReqMoney());
 
     data << uint32(pQuest->GetRewMoneyMaxLevel());          // used in XP calculation at client
-	if (pQuest->GetRewSpell())
+    if (pQuest->GetRewSpell())
      data << uint32(pQuest->GetRewSpell());                  // reward spell, this spell will display (icon) (casted if RewSpellCast==0)
-	else
+    else
      data << uint32(0);
 
     data << uint32(pQuest->GetSrcItemId());
@@ -677,10 +677,10 @@ void PlayerMenu::SendQuestGiverOfferReward( Quest const* pQuest, uint64 npcGUID,
     data << uint32(pQuest->GetRewOrReqMoney());
 
     data << uint32(0x00);                                   // unused by client?
-	if (pQuest->GetRewSpell())
+    if (pQuest->GetRewSpell())
      data << uint32(pQuest->GetRewSpell());                  // reward spell, this spell will display (icon) (casted if RewSpellCast==0)
-	else
-	 data << uint32(0);
+    else
+     data << uint32(0);
 
     pSession->SendPacket( &data );
     sLog.outDebug( "WORLD: Sent SMSG_QUESTGIVER_OFFER_REWARD NPCGuid=%u, questid=%u",GUID_LOPART(npcGUID),pQuest->GetQuestId() );
@@ -754,7 +754,7 @@ void PlayerMenu::SendQuestGiverRequestItems( Quest const *pQuest, uint64 npcGUID
             data << uint32(0);
     }
 
-	data << uint32(0x02);
+    data << uint32(0x02);
 
     if ( !Completable )
         data << uint32(0x00);

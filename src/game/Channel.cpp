@@ -571,7 +571,7 @@ void Channel::Say(uint64 p, const char *what, uint32 lang)
         data << (uint8)CHAT_MSG_CHANNEL;
         data << (uint32)lang;
         data << m_name;
-		data << (uint32)0;
+        data << (uint32)0;
         data << p;
         data << messageLength;
         data << what;

@@ -141,7 +141,7 @@ void PlayerSocial::SendSocialList()
         /*[TZERO]
         data << uint32(itr->second.Flags);                // player flag (0x1-friend?, 0x2-ignored?, 0x4-muted?)
         data << itr->second.Note;                         // string note */
-        if(SOCIAL_FLAG_FRIEND)								// if IsFriend()
+        if(SOCIAL_FLAG_FRIEND)                                // if IsFriend()
         {
             data << uint8(itr->second.Status);              // online/offline/etc?
             if(itr->second.Status)                          // if online
@@ -245,7 +245,7 @@ void SocialMgr::SendFriendStatus(Player *player, FriendsResult result, uint32 fr
     WorldPacket data;
     MakeFriendStatusPacket(result, friend_guid, &data);
     GetFriendInfo(player, friend_guid, fi);
-	switch(result)
+    switch(result)
     {
         case FRIEND_ADDED_OFFLINE:
         case FRIEND_ADDED_ONLINE:

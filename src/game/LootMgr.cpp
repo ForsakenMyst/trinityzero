@@ -42,7 +42,6 @@ LootStore LootTemplates_Fishing(      "fishing_loot_template",      "area id");
 LootStore LootTemplates_Gameobject(   "gameobject_loot_template",   "gameobject entry");
 LootStore LootTemplates_Item(         "item_loot_template",         "item entry");
 LootStore LootTemplates_Pickpocketing("pickpocketing_loot_template","creature pickpocket lootid");
-LootStore LootTemplates_Prospecting(  "prospecting_loot_template",  "item entry");
 LootStore LootTemplates_QuestMail(    "quest_mail_loot_template",   "quest id");
 LootStore LootTemplates_Reference(    "reference_loot_template",    "reference id");
 LootStore LootTemplates_Skinning(     "skinning_loot_template",     "creature skinning id");
@@ -1163,21 +1162,6 @@ void LoadLootTemplates_Pickpocketing()
     LootTemplates_Pickpocketing.ReportUnusedIds(ids_set);
 }
 
-void LoadLootTemplates_Prospecting()
-{
-    LootIdSet ids_set;
-    LootTemplates_Prospecting.LoadAndCollectLootIds(ids_set);
-
-    // remove real entries and check existence loot
-    for(uint32 i = 1; i < sItemStorage.MaxEntry; ++i )
-        if(ItemPrototype const* proto = sItemStorage.LookupEntry<ItemPrototype>(i))
-            if(ids_set.count(proto->ItemId))
-                ids_set.erase(proto->ItemId);
-
-    // output error for any still listed (not referenced from appropriate table) ids
-    LootTemplates_Prospecting.ReportUnusedIds(ids_set);
-}
-
 void LoadLootTemplates_QuestMail()
 {
     LootIdSet ids_set;
@@ -1232,7 +1216,6 @@ void LoadLootTemplates_Reference()
     LootTemplates_Pickpocketing.CheckLootRefs(&ids_set);
     LootTemplates_Skinning.CheckLootRefs(&ids_set);
     LootTemplates_Disenchant.CheckLootRefs(&ids_set);
-    LootTemplates_Prospecting.CheckLootRefs(&ids_set);
     LootTemplates_QuestMail.CheckLootRefs(&ids_set);
     LootTemplates_Reference.CheckLootRefs(&ids_set);
 

@@ -49,7 +49,7 @@ enum GuildRankRights
     GR_RIGHT_EPNOTE             = 0x00002040,
     GR_RIGHT_VIEWOFFNOTE        = 0x00004040,
     GR_RIGHT_EOFFNOTE           = 0x00008040,
-	// [TZERO] tbc enumerations [?]
+    // [TZERO] tbc enumerations [?]
     GR_RIGHT_MODIFY_GUILD_INFO  = 0x00010040,
     GR_RIGHT_ALL                = 0x000FF1FF
 };
@@ -60,7 +60,7 @@ enum Typecommand
     GUILD_INVITE_S  = 0x01,
     GUILD_QUIT_S    = 0x02,
     GUILD_FOUNDER_S = 0x0C,
-	// [TZERO] tbc enumerations [?]
+    // [TZERO] tbc enumerations [?]
     GUILD_UNK1      = 0x10,
     GUILD_UNK3      = 0x16
 };
@@ -81,7 +81,7 @@ enum CommandErrors
     GUILD_PLAYER_NOT_IN_GUILD_S     = 0x0A,
     GUILD_PLAYER_NOT_FOUND          = 0x0B,
     GUILD_NOT_ALLIED                = 0x0C,
-	// [TZERO] tbc enumerations [?]
+    // [TZERO] tbc enumerations [?]
     GUILD_RANK_TOO_HIGH_S           = 0x0D,
     GUILD_ALREADY_LOWEST_RANK_S     = 0x0E,
     GUILD_TEMP_ERROR                = 0x11,
@@ -106,7 +106,7 @@ enum GuildEvents
     GE_UNK2             = 0x0B,
     GE_SIGNED_ON        = 0x0C,
     GE_SIGNED_OFF       = 0x0D,
-	// [TZERO] tbc enumerations [?]
+    // [TZERO] tbc enumerations [?]
     GE_UNK3             = 0x0E,
     GE_UNK5             = 0x10,
     GE_UNK6             = 0x11,                             // string 0000000000002710 is 1 gold
@@ -274,7 +274,7 @@ class Guild
         void   LogGuildEvent(uint8 EventType, uint32 PlayerGuid1, uint32 PlayerGuid2, uint8 NewRank);
         void   RenumGuildEventlog();
 
-	    void   IncOnlineMemberCount() { ++m_onlinemembers; }
+        void   IncOnlineMemberCount() { ++m_onlinemembers; }
 
     protected:
         void AddRank(const std::string& name,uint32 rights);

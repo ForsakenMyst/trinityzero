@@ -82,7 +82,7 @@ void BattleGroundQueue::EligibleGroups::Init(BattleGroundQueue::QueuedGroupsList
             (*itr)->Players.size() <= MaxPlayers &&   // the group must fit in the bg
             ( (*itr)->Players.size() == MaxPlayers ) &&   // if rated, then pass only if the player count is exact NEEDS TESTING! (but now this should never happen)
             ( !DisregardTime || (*itr)->JoinTime <= DisregardTime ) // pass if disregard time is greater than join time
-		  )
+          )
         {
             // the group matches the conditions
             // using push_back for proper selecting when inviting
@@ -728,7 +728,7 @@ void BattleGroundMgr::Update(time_t diff)
 
 void BattleGroundMgr::BuildBattleGroundStatusPacket(WorldPacket *data, BattleGround *bg, uint32 team, uint8 QueueSlot, uint8 StatusID, uint32 Time1, uint32 Time2)
 {
-	// [TRINITY ROLLBACK] this procedure must be rewritten 
+    // [TRINITY ROLLBACK] this procedure must be rewritten 
     // we can be in 3 queues in same time...
     if(StatusID == 0)
     {
@@ -741,7 +741,7 @@ void BattleGroundMgr::BuildBattleGroundStatusPacket(WorldPacket *data, BattleGro
     data->Initialize(SMSG_BATTLEFIELD_STATUS, (5*4+1));
     *data << uint32(QueueSlot);                             // queue id (0...2) - player can be in 3 queues in time
     // uint64 in client
-	// *data << uint64( uint64(arenatype ? arenatype : bg->GetArenaType()) | (uint64(0x0D) << 8) | (uint64(bg->GetTypeID()) << 16) | (uint64(0x1F90) << 48) );
+    // *data << uint64( uint64(arenatype ? arenatype : bg->GetArenaType()) | (uint64(0x0D) << 8) | (uint64(bg->GetTypeID()) << 16) | (uint64(0x1F90) << 48) );
     *data << uint32(0);                                     // unknown
     // alliance/horde for BG and skirmish/rated for Arenas
 /*    *data << uint8(arenatype ? arenatype : bg->GetArenaType());                     // team type (0=BG, 2=2x2, 3=3x3, 5=5x5), for arenas    // NOT PROPER VALUE IF ARENA ISN'T RUNNING YET!!!!
@@ -1000,20 +1000,20 @@ uint32 BattleGroundMgr::CreateBattleGround(uint32 bgTypeId, uint32 MinPlayersPer
     switch(bgTypeId)
     {
         case BATTLEGROUND_AV: 
-			bg = new BattleGroundAV; 
-		    bg->SetName("Alterac Valley");
-			bg->SetMapId(30);
-		break;
+            bg = new BattleGroundAV; 
+            bg->SetName("Alterac Valley");
+            bg->SetMapId(30);
+        break;
         case BATTLEGROUND_WS: 
-			bg = new BattleGroundWS;
+            bg = new BattleGroundWS;
             bg->SetName("Warsong Gulch");
-			bg->SetMapId(489);
-		break;
+            bg->SetMapId(489);
+        break;
         case BATTLEGROUND_AB: 
-			bg = new BattleGroundAB;
-			bg->SetName("Arathi Basin");
-			bg->SetMapId(529);
-		break;
+            bg = new BattleGroundAB;
+            bg->SetName("Arathi Basin");
+            bg->SetMapId(529);
+        break;
 
         default:bg = new BattleGround;   break;             // placeholder for non implemented BG
     }

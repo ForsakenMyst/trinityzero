@@ -227,7 +227,7 @@ void WorldSession::HandleGameObjectQueryOpcode( WorldPacket & recv_data )
 
         Name = info->name;
 
-		// unused
+        // unused
         CastBarCaption = info->castBarCaption;
 
         int loc_idx = GetSessionDbLocaleIndex();
@@ -251,7 +251,7 @@ void WorldSession::HandleGameObjectQueryOpcode( WorldPacket & recv_data )
         data << uint16(0) << uint8(0) << uint8(0);           // name2, name3, name4
 
             for (uint16 d=0;d<10;d++)
-		    data << info->raw.data[d];
+            data << info->raw.data[d];
 
         data << uint64(0);
         data << uint64(0);
@@ -262,7 +262,7 @@ void WorldSession::HandleGameObjectQueryOpcode( WorldPacket & recv_data )
         data << uint64(0);                                      // Added in 1.12.x client branch
         data << uint64(0);                                      // Added in 1.12.x client branch
         
-		// [TZERO] to rewrite ?
+        // [TZERO] to rewrite ?
         // data << CastBarCaption;                             // 2.0.3, string. Text will appear in Cast Bar when using GO (ex: "Collecting")
         // data << uint8(0);                                   // 2.0.3, probably string
         // data.append(info->raw.data,24);

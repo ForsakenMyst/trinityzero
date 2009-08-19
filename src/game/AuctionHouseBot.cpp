@@ -882,7 +882,6 @@ void AuctionHouseBot::Initialize()
             "SELECT `item` FROM `item_loot_template` UNION "
             //"SELECT `item` FROM `milling_loot_template` UNION "
             "SELECT `item` FROM `pickpocketing_loot_template` UNION "
-            "SELECT `item` FROM `prospecting_loot_template` UNION "
             "SELECT `item` FROM `skinning_loot_template`";
 
         results = WorldDatabase.PQuery(lootQuery);

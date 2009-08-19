@@ -72,7 +72,6 @@ SpellMgr::SpellMgr()
             case SPELL_EFFECT_ENCHANT_ITEM_TEMPORARY:
             case SPELL_EFFECT_DISENCHANT:
             case SPELL_EFFECT_FEED_PET:
-            case SPELL_EFFECT_PROSPECTING:
                 EffectTargetType[i] = SPELL_REQUIRE_ITEM;
                 break;
             //caster must be pushed otherwise no sound

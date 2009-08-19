@@ -3241,7 +3241,7 @@ bool ChatHandler::HandleHonorAddKillCommand(const char* /*args*/)
 
     m_session->GetPlayer()->RewardHonor(target, 1);
     return true; */
-	return false;
+    return false;
 }
 
 bool ChatHandler::HandleUpdateHonorFieldsCommand(const char* /*args*/)

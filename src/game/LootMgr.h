@@ -300,7 +300,6 @@ extern LootStore LootTemplates_Item;
 extern LootStore LootTemplates_Pickpocketing;
 extern LootStore LootTemplates_Skinning;
 extern LootStore LootTemplates_Disenchant;
-extern LootStore LootTemplates_Prospecting;
 extern LootStore LootTemplates_QuestMail;
 
 void LoadLootTemplates_Creature();
@@ -310,7 +309,6 @@ void LoadLootTemplates_Item();
 void LoadLootTemplates_Pickpocketing();
 void LoadLootTemplates_Skinning();
 void LoadLootTemplates_Disenchant();
-void LoadLootTemplates_Prospecting();
 void LoadLootTemplates_QuestMail();
 void LoadLootTemplates_Reference();
 
@@ -323,7 +321,6 @@ inline void LoadLootTables()
     LoadLootTemplates_Pickpocketing();
     LoadLootTemplates_Skinning();
     LoadLootTemplates_Disenchant();
-    LoadLootTemplates_Prospecting();
     LoadLootTemplates_QuestMail();
     LoadLootTemplates_Reference();
 }

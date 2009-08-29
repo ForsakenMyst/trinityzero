@@ -9813,9 +9813,8 @@ Item* Player::EquipItem( uint16 pos, Item *pItem, bool update )
                     {
                         m_weaponChangeTimer = spellProto->StartRecoveryTime;
 
-                        WorldPacket data(SMSG_SPELL_COOLDOWN, 8+1+4);
+                        WorldPacket data(SMSG_SPELL_COOLDOWN, 8+4+4);
                         data << uint64(GetGUID());
-                        data << uint8(1);
                         data << uint32(cooldownSpell);
                         data << uint32(0);
                         GetSession()->SendPacket(&data);
